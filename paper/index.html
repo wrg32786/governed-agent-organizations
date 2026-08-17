@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A governed architecture for persistent AI agent organizations: identity, context continuity, memory, authority, evidence, and outcomes as separate layers.">
+<title>Governed Agent Organizations - Paper v1</title>
+<style>
+:root {
+  --ink: #17202a;
+  --muted: #52606d;
+  --line: #d8dee6;
+  --soft: #f5f7fa;
+  --accent: #183b56;
+  --accent-2: #2f6b8a;
+  --paper: #ffffff;
+  --max: 860px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #eef1f4;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.68;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent-2); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--accent); }
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+}
+.site-header-inner {
+  max-width: 1180px; margin: 0 auto; padding: 12px 22px;
+  display: flex; justify-content: space-between; gap: 20px; align-items: center;
+}
+.brand { font-size: 14px; font-weight: 750; letter-spacing: .02em; color: var(--accent); }
+.meta-links { display: flex; gap: 16px; font-size: 13px; }
+.layout {
+  max-width: 1180px; margin: 0 auto; padding: 34px 22px 70px;
+  display: grid; grid-template-columns: 240px minmax(0, var(--max)); gap: 42px; align-items: start;
+}
+.toc {
+  position: sticky; top: 74px;
+  max-height: calc(100vh - 94px); overflow: auto;
+  padding: 18px 16px; border: 1px solid var(--line); border-radius: 10px;
+  background: rgba(255,255,255,.9);
+}
+.toc h2 { margin: 0 0 10px; border: 0; padding: 0; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+.toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li { margin: 6px 0; font-size: 13px; line-height: 1.35; }
+.toc-l3 { padding-left: 13px; }
+.toc a { color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--accent); }
+.paper {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  padding: 62px 66px 72px; box-shadow: 0 12px 35px rgba(24,59,86,.06);
+}
+.paper-title {
+  margin: 0; color: var(--accent); font-family: Georgia, "Times New Roman", serif;
+  font-size: 48px; line-height: 1.06; letter-spacing: -.025em;
+}
+.paper-subtitle {
+  margin: 15px 0 31px; padding: 0 0 28px; border-bottom: 2px solid var(--accent);
+  color: var(--muted); font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px; line-height: 1.34; font-weight: 400;
+}
+h2, h3 { scroll-margin-top: 88px; }
+h2 {
+  margin: 2.35em 0 .65em; padding-bottom: .25em; border-bottom: 1px solid var(--line);
+  color: var(--accent); font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px; line-height: 1.25;
+}
+h3 {
+  margin: 1.85em 0 .5em; color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif; font-size: 22px; line-height: 1.3;
+}
+p { margin: .8em 0; }
+strong { color: #111820; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .88em; background: var(--soft); padding: .12em .3em; border-radius: 4px;
+}
+pre.code-block {
+  margin: 1.25em 0; padding: 18px 20px; overflow-x: auto;
+  border: 1px solid var(--line); border-left: 4px solid var(--accent-2); border-radius: 7px;
+  background: var(--soft); line-height: 1.48; break-inside: avoid;
+}
+pre code { padding: 0; background: transparent; font-size: 13px; }
+.pull-quote {
+  margin: 1.45em 0; padding: 14px 22px; border-left: 4px solid var(--accent-2);
+  background: #f7fafc; color: #243b53; font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+}
+ul, ol { padding-left: 1.45em; }
+li { margin: .25em 0; }
+.data-table {
+  width: 100%; border-collapse: collapse; margin: 1.35em 0; font-size: 13px; line-height: 1.45;
+}
+.data-table th, .data-table td { border: 1px solid var(--line); padding: 9px 10px; vertical-align: top; }
+.data-table th { background: #eaf0f4; text-align: left; color: var(--accent); }
+.data-table tr:nth-child(even) td { background: #fafbfc; }
+.footer-note {
+  max-width: 860px; margin: 24px auto 0; color: var(--muted); font-size: 12px; text-align: center;
+}
+@media (max-width: 920px) {
+  .layout { display: block; padding: 18px 12px 48px; }
+  .toc { position: relative; top: auto; max-height: none; margin-bottom: 18px; }
+  .paper { padding: 36px 26px 48px; }
+  .paper-title { font-size: 38px; }
+  .site-header-inner { padding: 10px 14px; }
+}
+@page {
+  size: A4;
+  margin: 20mm 18mm 20mm;
+  @top-left { content: "Governed Agent Organizations"; color: #52606d; font-size: 8.5pt; }
+  @top-right { content: "Paper v1"; color: #52606d; font-size: 8.5pt; }
+  @bottom-center { content: counter(page); color: #52606d; font-size: 8.5pt; }
+}
+@media print {
+  body { background: white; font-family: Georgia, "Times New Roman", serif; font-size: 10.5pt; line-height: 1.48; }
+  .site-header, .toc, .footer-note { display: none; }
+  .layout { display: block; margin: 0; padding: 0; max-width: none; }
+  .paper { border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+  .paper-title { font-size: 28pt; page-break-after: avoid; }
+  .paper-subtitle { font-size: 15pt; margin-bottom: 22pt; }
+  h2 { font-size: 17pt; break-after: avoid; margin-top: 19pt; }
+  h3 { font-size: 13pt; break-after: avoid; margin-top: 14pt; }
+  p, li { orphans: 3; widows: 3; }
+  a { color: inherit; text-decoration: none; }
+  pre.code-block { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 8pt; white-space: pre-wrap; }
+  .data-table { font-family: Arial, sans-serif; font-size: 7.6pt; }
+  .data-table th, .data-table td { padding: 5pt; }
+  blockquote { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="site-header-inner">
+  <div class="brand">Governed Agent Organizations</div>
+  <div class="meta-links">
+    <a href="../CLAIM-EVIDENCE-LEDGER.csv">Claims</a>
+    <a href="../SOURCE-AND-LICENSE-REGISTRY.csv">Sources</a>
+    <a href="../LIMITATIONS-AND-NON-CLAIMS.md">Limitations</a>
+  </div>
+</div></header>
+<div class="layout">
+<nav class="toc" aria-label="Table of contents"><h2>Contents</h2><ol><li class="toc-l2"><a href="#persistent-identity-context-continuity-human-authority-and-evidence-bounded-improvement">Persistent identity, context continuity, human authority, and evidence-bounded improvement</a></li><li class="toc-l2"><a href="#abstract">Abstract</a></li><li class="toc-l2"><a href="#1-problem-and-contribution">1. Problem and contribution</a></li><li class="toc-l3"><a href="#what-is-not-claimed-as-original">What is not claimed as original</a></li><li class="toc-l3"><a href="#evidence-vocabulary">Evidence vocabulary</a></li><li class="toc-l2"><a href="#2-six-falsifiable-hypotheses">2. Six falsifiable hypotheses</a></li><li class="toc-l3"><a href="#h1-layer-non-substitution">H1 - Layer Non-Substitution</a></li><li class="toc-l3"><a href="#h2-continuity-transaction">H2 - Continuity Transaction</a></li><li class="toc-l3"><a href="#h3-governed-improvement">H3 - Governed Improvement</a></li><li class="toc-l3"><a href="#h4-durable-human-gate">H4 - Durable Human Gate</a></li><li class="toc-l3"><a href="#h5-honest-terminal-completeness">H5 - Honest-Terminal Completeness</a></li><li class="toc-l3"><a href="#h6-research-to-learning-closure">H6 - Research-to-Learning Closure</a></li><li class="toc-l2"><a href="#3-architecture">3. Architecture</a></li><li class="toc-l3"><a href="#3-1-persistent-identity">3.1 Persistent identity</a></li><li class="toc-l3"><a href="#3-2-active-working-context">3.2 Active working context</a></li><li class="toc-l3"><a href="#3-3-institutional-memory">3.3 Institutional memory</a></li><li class="toc-l3"><a href="#3-4-authority">3.4 Authority</a></li><li class="toc-l3"><a href="#3-5-evidence-and-evaluation">3.5 Evidence and evaluation</a></li><li class="toc-l3"><a href="#3-6-organizational-coordination">3.6 Organizational coordination</a></li><li class="toc-l3"><a href="#3-7-domain-engines">3.7 Domain engines</a></li><li class="toc-l3"><a href="#3-8-operator-interface">3.8 Operator interface</a></li><li class="toc-l2"><a href="#4-related-work-and-architectural-disposition">4. Related work and architectural disposition</a></li><li class="toc-l3"><a href="#deepseek-harness-and-cordis">DeepSeek Harness and Cordis</a></li><li class="toc-l2"><a href="#5-context-continuity-reference-implementation">5. Context continuity reference implementation</a></li><li class="toc-l3"><a href="#bounded-live-result">Bounded live result</a></li><li class="toc-l2"><a href="#6-governance-and-safety">6. Governance and safety</a></li><li class="toc-l3"><a href="#6-1-non-self-activation">6.1 Non-self-activation</a></li><li class="toc-l3"><a href="#6-2-business-space-isolation">6.2 Business-space isolation</a></li><li class="toc-l3"><a href="#6-3-prompt-and-memory-trust">6.3 Prompt and memory trust</a></li><li class="toc-l3"><a href="#6-4-external-systems-of-record">6.4 External systems of record</a></li><li class="toc-l3"><a href="#6-5-human-authority">6.5 Human authority</a></li><li class="toc-l2"><a href="#7-evidence-maturity">7. Evidence maturity</a></li><li class="toc-l3"><a href="#demonstrated">Demonstrated</a></li><li class="toc-l3"><a href="#repository-observed-or-test-covered">Repository-observed or test-covered</a></li><li class="toc-l3"><a href="#proposed-or-held">Proposed or held</a></li><li class="toc-l3"><a href="#unknown-or-unestablished">Unknown or unestablished</a></li><li class="toc-l2"><a href="#8-evaluation-program">8. Evaluation program</a></li><li class="toc-l2"><a href="#9-limitations-and-non-claims">9. Limitations and non-claims</a></li><li class="toc-l2"><a href="#10-conclusion">10. Conclusion</a></li></ol></nav>
+<main class="paper" id="paper"><h1 class="paper-title" id="governed-agent-organizations">Governed Agent Organizations</h1>
+<h2 class="paper-subtitle" id="persistent-identity-context-continuity-human-authority-and-evidence-bounded-improvement">Persistent identity, context continuity, human authority, and evidence-bounded improvement</h2>
+<p><strong>Edition:</strong> Paper v1 - architecture and research synthesis<br/>
+<strong>Evidence cutoff:</strong> 2026-08-16<br/>
+<strong>Status:</strong> private release candidate pending final clean-history and principal release decision</p>
+<h2 id="abstract">Abstract</h2>
+<p>Language models can generate plans, code, analysis, and text, but those abilities alone do not create an organization. A durable organization needs identity that survives model and session changes, working context that is not confused with institutional memory, authority that cannot be inferred from conversation, independent evaluation, explicit ownership and closure, and outcomes that are not reduced to agent activity.</p>
+<p>This paper proposes a governed architecture for persistent AI agent organizations. Its contribution is not a single new memory algorithm, context method, orchestration framework, or optimization technique. It is a system of non-substitutable layers and explicit transitions joining persistent identity, active working context, inspectable institutional memory, human authority, evidence-bounded improvement, organizational coordination, domain engines, and outcome discipline.</p>
+<p>The architecture is presented as six falsifiable hypotheses rather than a universal novelty claim. Existing prior art supplies important components. This work asks how those components can be combined without turning context into truth, signatures into authority, candidates into active behavior, or activity into outcomes.</p>
+<p>A public reference implementation of managed context refresh is available in <code>wrg32786/aigent-os</code> at commit <code>81dd47d3215df0aedb73a378601be431defc7d2f</code>. One bounded release population observed 11 of 11 transport transactions on one Windows reference seat, with one capsule request, one acknowledgement, one clear, and one fresh session identity per transaction; zero acknowledgements were stranded and zero duplicate clears occurred. This does not establish 20-cycle bookkeeping, fleet reliability, universal platform behavior, implemented organizational products, or business outcomes.</p>
+<h2 id="1-problem-and-contribution">1. Problem and contribution</h2>
+<p>Capable models do not, by themselves, constitute durable workers or organizations. A production agent system must preserve several different kinds of state and authority across model swaps, context boundaries, process failures, changing evidence, and human decisions.</p>
+<p>The central claim of this paper is a governed-integration hypothesis:</p>
+<pre class="code-block"><code class="language-text">AgentIdentity != ModelProfile != RuntimeBinding != AuthorityGrant
+WorkingContext != InstitutionalMemory
+Message != DecisionRecord
+Signature != Permission
+Candidate != ActivatedCapability
+Activity != Outcome
+</code></pre>
+<p>The contribution is the refusal to collapse those layers, plus explicit transitions that can fail honestly and be independently reviewed.</p>
+<h3 id="what-is-not-claimed-as-original">What is not claimed as original</h3>
+<p>This paper does not claim invention of externalized context, memory retrieval, agent workflows, tool protocols, multi-agent collaboration, skill optimization, event-sourced sessions, or plugin composition. Prior work supplies each of those mechanisms. The proposed contribution is the governed combination and its non-substitution rules.</p>
+<h3 id="evidence-vocabulary">Evidence vocabulary</h3>
+<p>Material statements are typed as one of:</p>
+<pre class="code-block"><code class="language-text">prior published result
+repository-statically-observed mechanism
+repository-test-covered mechanism
+implemented mechanism
+independently demonstrated behavior
+repeated operating result
+business outcome
+inference
+hypothesis
+UNKNOWN
+</code></pre>
+<p>The following substitutions are prohibited:</p>
+<pre class="code-block"><code class="language-text">paper result != local result
+code present != capability working
+test file != executed test
+research accepted != implementation
+one run != reliability
+agent activity != organizational performance
+publish event != business outcome
+</code></pre>
+<h2 id="2-six-falsifiable-hypotheses">2. Six falsifiable hypotheses</h2>
+<h3 id="h1-layer-non-substitution">H1 - Layer Non-Substitution</h3>
+<p>Identity, runtime binding, authority, working context, institutional memory, evidence, and outcome are distinct layers. Collapsing any pair is expected to create a predictable failure class.</p>
+<p>Examples:</p>
+<ul>
+<li>model selection silently changes privacy or authority;</li>
+<li>a stale checkpoint is treated as current organizational truth;</li>
+<li>a signed message is treated as permission;</li>
+<li>an accepted research result is treated as installed behavior;</li>
+<li>a publish event is treated as a business outcome.</li>
+</ul>
+<h3 id="h2-continuity-transaction">H2 - Continuity Transaction</h3>
+<p>Continuity is not a checkpoint file or a successful-looking screen. It is a complete transaction:</p>
+<pre class="code-block"><code class="language-text">capture requested
+-&gt; request submitted
+-&gt; durable state acknowledged
+-&gt; boundary crossed exactly once
+-&gt; fresh identity observed
+-&gt; prior state re-grounded
+-&gt; wake submitted exactly once
+-&gt; material work continues
+-&gt; transaction closes with evidence
+</code></pre>
+<p>Partial transport is not continuity. A pseudo-terminal write is not necessarily a submitted command. A new session is not necessarily a re-grounded session.</p>
+<p>A comparative prediction follows from the architecture: discrete capsules plus a fresh-session boundary may reduce cumulative semantic drift relative to repeated summary-of-summary consolidation over many context boundaries. This is a hypothesis, not an empirical superiority claim. DeepSeek Harness retains its complete append-only event log even when its model-visible surface is compacted; that durable log must not be described as lost.</p>
+<h3 id="h3-governed-improvement">H3 - Governed Improvement</h3>
+<p>Safe improvement requires separate state and authority for:</p>
+<pre class="code-block"><code class="language-text">candidate generation
+exact artifact identity
+execution environment
+independent evaluation
+promotion decision
+serving scope
+outcome measurement
+rollback or retirement
+</code></pre>
+<p>A skill, harness, engine, evaluator, or organizational change cannot approve itself merely because it improved its own metric.</p>
+<h3 id="h4-durable-human-gate">H4 - Durable Human Gate</h3>
+<p>Consequential control cannot reliably exist only as chat, an interrupt, a notification, or an approval button. It requires canonical decision objects, authority basis, options, evidence, a durable decision record, propagation, and closure evidence.</p>
+<p>A decision is incomplete until dependent work has resumed, changed, delegated, deferred, cancelled, or closed.</p>
+<h3 id="h5-honest-terminal-completeness">H5 - Honest-Terminal Completeness</h3>
+<p>Systems that cannot terminate honestly as:</p>
+<pre class="code-block"><code class="language-text">UNRUNNABLE
+NO_DATA
+NO_IMPROVEMENT
+HOLD
+REJECT
+ROLLBACK
+</code></pre>
+<p>are structurally biased toward manufacturing progress.</p>
+<h3 id="h6-research-to-learning-closure">H6 - Research-to-Learning Closure</h3>
+<p>Research affects an agent organization only through a complete evidence chain:</p>
+<pre class="code-block"><code class="language-text">source
+-&gt; claim
+-&gt; independent disposition
+-&gt; retrieval at the relevant task moment
+-&gt; bounded use
+-&gt; learning candidate
+-&gt; pre-registered evaluation
+-&gt; approved serving
+-&gt; measured outcome
+-&gt; retain, revise, retire, or rollback
+</code></pre>
+<p>A report stored in memory is not learning. Retrieval is not use. Use is not improvement.</p>
+<h2 id="3-architecture">3. Architecture</h2>
+<h3 id="3-1-persistent-identity">3.1 Persistent identity</h3>
+<p>Agent identity belongs outside the current model and session. A model is a runtime binding, not an employee, role, or permission grant. Model changes must preserve identity, mission, memory references, and authority scope, or refuse loudly.</p>
+<h3 id="3-2-active-working-context">3.2 Active working context</h3>
+<p>Programmatic context methods may hold source bundles, parsed artifacts, indexes, intermediate results, and child-agent handles. This state is useful but transient and non-authoritative.</p>
+<h3 id="3-3-institutional-memory">3.3 Institutional memory</h3>
+<p>Institutional memory should remain inspectable, versioned, provenance-bearing, and separable from retrieval accelerators. Summaries and capsules are bounded state carriers, not universal truth. Current operational facts still require current reads from authoritative systems.</p>
+<p>A durable capsule trail has different properties from recursive compaction:</p>
+<ul>
+<li>each capsule remains a separate historical artifact;</li>
+<li>later work can identify when a belief first appeared or was superseded;</li>
+<li>current identity does not come from capsule text;</li>
+<li>live re-grounding can reject stale claims;</li>
+<li>retrieval can search the historical trail with provenance and time.</li>
+</ul>
+<p>This does not make capsules automatically accurate. A capsule can omit facts, contain stale assumptions, or carry malicious data. It must be framed as historical evidence, not authority.</p>
+<h3 id="3-4-authority">3.4 Authority</h3>
+<p>Consequential tools and organizational changes require pre-action authority. Post-action warnings are telemetry, not control. Agent identity, model capability, source authenticity, and action permission remain distinct.</p>
+<h3 id="3-5-evidence-and-evaluation">3.5 Evidence and evaluation</h3>
+<p>A green result is evidence only when:</p>
+<ul>
+<li>the population is named;</li>
+<li>exact code, harness, environment, and artifacts are frozen;</li>
+<li>the check can turn red for the intended reason;</li>
+<li>negative tests have same-run positive witnesses;</li>
+<li>the maker is not the sole checker;</li>
+<li>changed identities invalidate prior proof unless the change is outside the proof surface.</li>
+</ul>
+<h3 id="3-6-organizational-coordination">3.6 Organizational coordination</h3>
+<p>Messages are not obligations. Findings are not automatically work. Work requires an authority basis, owner, closure condition, evidence requirement, and reopen path. Organizational truth belongs in canonical objects rather than reconstructed chat.</p>
+<h3 id="3-7-domain-engines">3.7 Domain engines</h3>
+<p>Business-function engines should be inspectable packages with explicit objects, events, integrations, source-of-truth maps, authority matrices, privacy rules, budgets, evaluation profiles, and rollback hooks. Generated candidates cannot grant themselves data, credentials, budget, or activation.</p>
+<h3 id="3-8-operator-interface">3.8 Operator interface</h3>
+<p>The primary human surface should answer:</p>
+<pre class="code-block"><code class="language-text">What needs me?
+Why?
+What is blocked?
+What is still moving?
+What evidence supports the recommendation?
+What changes if I decide?
+Did dependent work actually resume?
+</code></pre>
+<p>The interface is a view over canonical state. Visual green cannot substitute for freshness, completeness, reconciliation, or authority.</p>
+<h2 id="4-related-work-and-architectural-disposition">4. Related work and architectural disposition</h2>
+<p>The source registry records exact pins, licenses or citation-only terms, inspection level, supported claim, and limitations.</p>
+<table class="data-table">
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Representative source</th>
+<th>Disposition</th>
+<th>Boundary retained here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Working-context externalization</td>
+<td>Recursive Language Models</td>
+<td>ADAPT</td>
+<td>Working context is not institutional memory or authority</td>
+</tr>
+<tr>
+<td>Virtual/tiered context</td>
+<td>MemGPT</td>
+<td>WATCH/ADAPT</td>
+<td>Context management does not create organizational truth</td>
+</tr>
+<tr>
+<td>Memory, reflection, planning</td>
+<td>Generative Agents; Reflexion; ExpeL; Agent Workflow Memory</td>
+<td>ADAPT</td>
+<td>Retrieved experience remains evidence, not active authority</td>
+</tr>
+<tr>
+<td>Skill optimization</td>
+<td>SkillOpt</td>
+<td>ADAPT proposal-only</td>
+<td>A candidate cannot activate itself</td>
+</tr>
+<tr>
+<td>Continual harness refinement</td>
+<td>Continual Harness</td>
+<td>ADAPT research claims</td>
+<td>Optimizer and evaluator remain separate</td>
+</tr>
+<tr>
+<td>Signed-event collaboration</td>
+<td>Buzz</td>
+<td>INTEROPERATE</td>
+<td>Signature is not authority</td>
+</tr>
+<tr>
+<td>Tool/context protocol</td>
+<td>MCP</td>
+<td>ADAPT</td>
+<td>The application retains policy and scope authority</td>
+</tr>
+<tr>
+<td>Agent-user event transport</td>
+<td>AG-UI</td>
+<td>INTEROPERATE</td>
+<td>Transport does not grant action authority</td>
+</tr>
+<tr>
+<td>Agent-agent protocol</td>
+<td>A2A</td>
+<td>WATCH</td>
+<td>Discovery/task exchange is not decision truth</td>
+</tr>
+<tr>
+<td>Minimal agent runtime</td>
+<td>Pi agent core; Prime Agent</td>
+<td>ADAPT selected seams</td>
+<td>Runtime binding does not own identity or authority</td>
+</tr>
+<tr>
+<td>Same-session event-sourced runtime and compaction</td>
+<td>DeepSeek Harness</td>
+<td>INTEROPERATE/ADAPT</td>
+<td>Complete log is durable; model-visible recursive summary remains a distinct tradeoff</td>
+</tr>
+<tr>
+<td>Dynamic component composition</td>
+<td>Cordis and its preprint</td>
+<td>ADAPT/CITE/WATCH</td>
+<td>Reversible runtime effects are not organizational rollback or authority</td>
+</tr>
+<tr>
+<td>Multi-agent software organizations</td>
+<td>MetaGPT; ChatDev</td>
+<td>WATCH</td>
+<td>Role-play and software benchmarks do not establish governed organizations</td>
+</tr>
+<tr>
+<td>Kernel-style agent services</td>
+<td>AIOS</td>
+<td>WATCH/ADAPT</td>
+<td>Service composition remains below the governance boundary</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deepseek-harness-and-cordis">DeepSeek Harness and Cordis</h3>
+<p>DeepSeek Harness is a substantial plugin-composed, event-sourced agent runtime. It includes session persistence, goals, plans, tools, permissions, sandboxes, workflows, subagents, skills, and automatic same-session compaction. Cordis provides the underlying service/event/effect composition model.</p>
+<p>The architectural lesson is not to rebuild a generic harness blindly. A governed organization can treat DeepSeek Harness, Claude Code, Codex, or another runtime as a <code>RuntimeBinding</code>. Identity, authority, institutional memory, accepted evidence, obligations, and outcomes remain outside the replaceable runtime.</p>
+<p>Cordis runtime effects can be reversible. Organizational actions often are not. A plugin can unregister a tool; it cannot retroactively undo a payment, revoke a settled decision, or reconcile an external system of record.</p>
+<h2 id="5-context-continuity-reference-implementation">5. Context continuity reference implementation</h2>
+<p>The public <code>aigent-os</code> repository ships a managed context-refresh path at commit <code>81dd47d3215df0aedb73a378601be431defc7d2f</code>.</p>
+<p>The intended sequence is:</p>
+<pre class="code-block"><code class="language-text">context pressure rises
+-&gt; request one capsule
+-&gt; observe one exact acknowledgement
+-&gt; submit one clear
+-&gt; observe a fresh session identity
+-&gt; submit one resume wake
+-&gt; load prior work
+-&gt; re-ground against live state
+-&gt; continue the objective
+</code></pre>
+<p>The safety invariant is:</p>
+<pre class="code-block"><code class="language-text">no acknowledgement -&gt; no clear
+one valid acknowledgement -&gt; exactly one clear
+</code></pre>
+<p>The implementation writes slash-command text and Enter separately so the terminal application can use its native prompt queue. Busy or idle output is not a readiness veto after the acknowledgement.</p>
+<h3 id="bounded-live-result">Bounded live result</h3>
+<p>A reviewed release population on one Windows reference seat produced 11 of 11 observed transport transactions. Each transaction had one capsule request, one acknowledgement, one clear, and one fresh session identity. No acknowledgement was stranded and no duplicate clear occurred.</p>
+<p>The accelerated observation protocol later failed its own bookkeeping inside one unchanged session. That failure is not counted as a failed refresh transaction, but it prevents a 20-of-20 claim.</p>
+<p>The maximum supported statement is:</p>
+<blockquote class="pull-quote">
+<p>One Windows reference seat completed 11 of 11 observed Auto-Refresh transport transactions at the reviewed release snapshot, each with one capsule request, one acknowledgement, one clear, and one fresh session identity, with zero stranded acknowledgements and zero duplicate clears.</p>
+</blockquote>
+<p>The result does not establish fleet reliability, universal platform behavior, or a completed empirical evaluation of material continuation across every cycle. The sanitized case study records the exact public product identity and the evidence boundary.</p>
+<h2 id="6-governance-and-safety">6. Governance and safety</h2>
+<h3 id="6-1-non-self-activation">6.1 Non-self-activation</h3>
+<p>Candidate generation, evaluation, promotion, installation, serving authority, and outcome measurement are separate transitions. Research acceptance or a green test cannot grant production authority.</p>
+<h3 id="6-2-business-space-isolation">6.2 Business-space isolation</h3>
+<p>Memory, credentials, integrations, budgets, and customer or financial state must not silently cross organizational scopes. Cross-scope access requires explicit authority and a target contract.</p>
+<h3 id="6-3-prompt-and-memory-trust">6.3 Prompt and memory trust</h3>
+<p>Persisted text is data, not instruction. A safe renderer should quote, bound, and place untrusted content after policy fences. Semantic influence remains possible even after structural escaping, so provenance and live re-grounding are still required.</p>
+<h3 id="6-4-external-systems-of-record">6.4 External systems of record</h3>
+<p>Local memory is not automatically authoritative for customers, accounting, publishing, advertising, contracts, payments, analytics, source code, or live program state.</p>
+<h3 id="6-5-human-authority">6.5 Human authority</h3>
+<p>Humans remain authoritative for consequential activation, publication, finance and capital, credentials, budgets, privacy destinations, cross-scope access, organizational policy, and acceptance of material risk.</p>
+<h2 id="7-evidence-maturity">7. Evidence maturity</h2>
+<h3 id="demonstrated">Demonstrated</h3>
+<ul>
+<li>a bounded managed Auto-Refresh transport population on one Windows reference seat;</li>
+<li>public product code and direct test coverage for managed refresh;</li>
+<li>a one-command supported install path for the managed runner.</li>
+</ul>
+<h3 id="repository-observed-or-test-covered">Repository-observed or test-covered</h3>
+<ul>
+<li>deterministic capsule selection and resume rendering;</li>
+<li>current-session identity supplied by the fresh session-start event rather than historical capsule text;</li>
+<li>protected two-part terminal command submission;</li>
+<li>explicit non-claims and failure terminals;</li>
+<li>reusable program-control artifacts in this repository.</li>
+</ul>
+<h3 id="proposed-or-held">Proposed or held</h3>
+<ul>
+<li>a new general kernel substrate;</li>
+<li>a full operator Studio;</li>
+<li>generated Domain Engines;</li>
+<li>a runnable reference corporation;</li>
+<li>automated evidence-backed self-improvement;</li>
+<li>broad fleet conformance.</li>
+</ul>
+<h3 id="unknown-or-unestablished">Unknown or unestablished</h3>
+<ul>
+<li>20 consecutive independently verified cycles;</li>
+<li>fleet reliability;</li>
+<li>universal platform reliability;</li>
+<li>lower operator burden;</li>
+<li>improved revenue, retention, customer, or financial outcomes;</li>
+<li>empirical superiority of fresh-session capsules over recursive compaction.</li>
+</ul>
+<h2 id="8-evaluation-program">8. Evaluation program</h2>
+<p>A credible evaluation separates:</p>
+<ol>
+<li>continuity and refresh;</li>
+<li>memory retrieval and temporal truth;</li>
+<li>prompt and authority boundaries;</li>
+<li>skill and harness improvement;</li>
+<li>evaluator integrity;</li>
+<li>model/runtime swaps;</li>
+<li>agent coordination and obligations;</li>
+<li>operator comprehension and burden;</li>
+<li>privacy and business-space isolation;</li>
+<li>customer, financial, and business outcomes.</li>
+</ol>
+<p>No opaque composite score may average away authority, privacy, stale-state, rollback, or business-outcome failure.</p>
+<p>A future comparison of recursive compaction and fresh-session capsules should hold the task and model population constant, inject exact facts, later corrections, uncertainty, and stale decisions, then score retention, provenance, stale-fact rejection, next-action accuracy, and token cost over many boundaries.</p>
+<h2 id="9-limitations-and-non-claims">9. Limitations and non-claims</h2>
+<p>This paper does not establish:</p>
+<ul>
+<li>novelty priority for every hypothesis;</li>
+<li>20-cycle or fleet reliability;</li>
+<li>universal prompt-injection resistance;</li>
+<li>safe autonomous self-improvement;</li>
+<li>implemented multi-business isolation;</li>
+<li>an implemented operator cockpit;</li>
+<li>implemented Domain Engines;</li>
+<li>a runnable reference corporation;</li>
+<li>lower operator burden;</li>
+<li>improved business outcomes.</li>
+</ul>
+<p>The detailed raw operating evidence for the bounded live result is not published in this edition. The public claim is limited to the sanitized extract and publicly inspectable product identity. The absence of raw private evidence is a limitation, not permission to infer a broader result.</p>
+<p>The Cordis preprint has no reuse license identified at the pinned repository state. It is cited and paraphrased only; no prose, figures, diagrams, pages, or code are reproduced.</p>
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p>Capable agents do not become organizations by adding more context, memory, tools, agents, or autonomy. They become organizations only when persistent identity, inspectable institutional memory, authority, independent evaluation, obligations, rollback, and outcomes are joined by explicit, falsifiable transitions.</p>
+<p>The contribution claimed here is a governed integration and a set of failure-derived hypotheses. Novelty priority remains unproven. A bounded context-refresh transport result exists, while repeated reliability, broad implementation, organizational performance, and business outcomes remain open empirical questions.</p>
+</main>
+</div>
+<div class="footer-note">Paper v1 - architecture and research synthesis. See the source registry and limitations for evidence boundaries.</div>
+</body></html>

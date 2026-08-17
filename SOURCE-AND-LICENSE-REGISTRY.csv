@@ -1,0 +1,23 @@
+source_id,name,version_or_pin,license_or_terms,public_location,inspection_level,strongest_supported_claim,limitation,release_status
+S001,Recursive Language Models,alexzhang13/rlm@caf0bffa1acec17c062559433b4cd4ed92eee3d6,MIT,https://github.com/alexzhang13/rlm,repository+paper,"Working-context externalization","Not institutional memory or authority",READY
+S002,SkillOpt,microsoft/SkillOpt@47fe269d75d3def79ffd90236261d26d84868ae5,MIT,https://github.com/microsoft/SkillOpt,repository+paper,"Text-space skill optimization","No production authority",READY
+S003,Continual Harness,arXiv:2605.09998v1,arXiv terms,https://arxiv.org/abs/2605.09998,paper,"Reset-free harness refinement research","Official code population not used here",READY
+S004,Buzz,block/buzz@4b3570671eb2786594267758af18784ac6e82972,Apache-2.0,https://github.com/block/buzz,repository-static,"Signed-event collaboration plane","Signature is not authority",READY
+S005,Model Context Protocol,modelcontextprotocol/modelcontextprotocol@4df2d6b6e3588efb46e7542d98498e5c630a0a86,"Apache-2.0 new/spec; MIT legacy; CC-BY-4.0 non-spec docs",https://github.com/modelcontextprotocol/modelcontextprotocol,repository+spec,"Tool/context protocol surface","Citation/architecture use only; no copied spec or docs text",READY
+S006,AG-UI,ag-ui-protocol/ag-ui@50075f4f3d78be92ada69a5c1857ff8d0cf5c5c2,MIT,https://github.com/ag-ui-protocol/ag-ui,repository+spec,"Agent-user event transport","No action authority",READY
+S007,Agent2Agent,a2aproject/A2A@134a382ed38a0c527902e21b5b61c1666a60402e,Apache-2.0,https://github.com/a2aproject/A2A,repository+spec,"Agent discovery and task exchange","Not decision truth or authority",READY
+S008,Prime Agent,PrimeIntellect-ai/prime-agent@a18809e00ea30638584d87b3afea7285a9d7296c,MIT,https://github.com/PrimeIntellect-ai/prime-agent,repository-static,"Long-running agent/runtime surfaces","Selective study only",READY
+S009,Pi agent core,earendil-works/pi@936aff00918de1187f085f123c2812d8f2d67745,MIT,https://github.com/earendil-works/pi,repository-static,"Minimal extensible loop/provider abstraction","Compatibility not demonstrated",READY
+S010,MemHarness,KnowledgeXLab/MemHarness@0cafec599c80d186eed64d507bbad12716001ad2,Apache-2.0,https://github.com/KnowledgeXLab/MemHarness,repository-static,"Memory applicability input","README badge says MIT at the pin; inconsistency preserved; citation only",READY
+S011,Generative Agents,arXiv:2304.03442,arXiv terms,https://arxiv.org/abs/2304.03442,paper,"Memory reflection and planning in simulation","Not organizational proof",READY
+S012,MemGPT,arXiv:2310.08560,arXiv terms,https://arxiv.org/abs/2310.08560,paper,"Virtual context and tiered memory","External result only",READY
+S013,Reflexion,arXiv:2303.11366,arXiv terms,https://arxiv.org/abs/2303.11366,paper,"Verbal reinforcement and reflection","Not independent evaluation",READY
+S014,ExpeL,arXiv:2308.10144,arXiv terms,https://arxiv.org/abs/2308.10144,paper,"Experiential learning for agents","External result only",READY
+S015,Agent Workflow Memory,arXiv:2409.07429,arXiv terms,https://arxiv.org/abs/2409.07429,paper,"Reusable workflow memory","Not authority or outcome proof",READY
+S016,AIOS,arXiv:2403.16971,arXiv terms,https://arxiv.org/abs/2403.16971,paper,"Kernel-style agent services","External architecture only",READY
+S017,MetaGPT,arXiv:2308.00352,arXiv terms,https://arxiv.org/abs/2308.00352,paper,"Role/SOP multi-agent collaboration","Software benchmark only",READY
+S018,ChatDev,arXiv:2307.07924,arXiv terms,https://arxiv.org/abs/2307.07924,paper,"Communicative software agents","External benchmark only",READY
+S019,DeepSeek Harness,deepseek-ai/deepseek-harness@47f943859bef60e4160492346772ded9b24f765a,MIT,https://github.com/deepseek-ai/deepseek-harness,repository-static,"Plugin-composed event-sourced runtime and same-session compaction","Developer preview; breaking changes expected; not installed or run",READY
+S020,Cordis,cordiverse/cordis@8cc9e33fab69e2d0476d126baaf2acb24e6a6ab4,MIT,https://github.com/cordiverse/cordis,repository-static,"Reversible effects and reactive coeffects","API unstable; not installed or run",READY
+S021,Cordis preprint,cordiverse/paper@948a07b369c62adb3b12e102458be5c18dfb69b9,NO_REUSE_LICENSE_FOUND-CITATION_ONLY,https://github.com/cordiverse/paper,preprint,"Spatiotemporal composability proposal","Cite/paraphrase only; no copied prose figures diagrams pages or code",READY
+S022,aigent-OS public product,wrg32786/aigent-os@81dd47d3215df0aedb73a378601be431defc7d2f,MIT,https://github.com/wrg32786/aigent-os,repository+tests,"Managed context-refresh implementation and public tests","One public repository identity; live evidence remains bounded",READY
