@@ -4,7 +4,7 @@
 
 **Edition:** Paper v1 - architecture and research synthesis  
 **Evidence cutoff:** 2026-08-16  
-**Status:** private release candidate pending final clean-history and principal release decision
+**Status:** Paper v1 public edition; clean parentless root and fresh-target verification complete; final principal publication decision pending
 
 ## Abstract
 

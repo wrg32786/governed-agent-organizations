@@ -22,7 +22,7 @@ This is the public-safe map of the research program. Detailed private assignment
 | Domain Engine Factory | How are business-function engines generated, tested, installed, and rolled back? | Architecture; runtime not implemented |
 | Operator Studio | How should decisions, evidence, missions, models, and businesses appear to a human? | Product architecture; implementation held |
 | Reference corporation | What staged pilot could test the integrated system without false business claims? | Pre-registration; currently unrunnable |
-| Technical paper | What is original, prior art, proposed, implemented, demonstrated, or unknown? | Paper v1 release candidate |
+| Technical paper | What is original, prior art, proposed, implemented, demonstrated, or unknown? | Paper v1 public edition |
 
 ## Maturity ladder
 

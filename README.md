@@ -1,6 +1,6 @@
 # Governed Agent Organizations
 
-**Status:** private release candidate. Content, citations, rendered artifacts, and sanitation are complete; public release requires the final principal decision at the frozen clean-history commit.
+**Status:** Paper v1 public edition. This repository is the clean publication target, seeded only from the unchanged parentless clean root `f64b637a403b16fbbf69f4f2f0a7ad0d8b918e0e`. Content, citations, rendered artifacts, sanitation, fresh-root review, and publication-mechanism verification are complete; public visibility awaits the final principal release decision. The private review and forensic archive is `wrg32786/governed-agent-organizations-review`.
 
 This repository is a public-safe research corpus for persistent, governed AI agent organizations. It asks how capable models can become durable institutions without collapsing identity, working context, memory, authority, evidence, and outcomes into one opaque agent loop.
 

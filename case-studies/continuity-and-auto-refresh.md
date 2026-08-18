@@ -7,11 +7,13 @@
 ```text
 transport public commit  4b207ed725d54c01c9fdad066c1762f285326af0
 transport public tree    f51e935770ddef47eb2eb1577de7c91e25f4ab89
-current public commit    81dd47d3215df0aedb73a378601be431defc7d2f
-current public tree      11a04056e6ffbf79447257e06ad2ec2bcd12f962
+one-command implementation pin  81dd47d3215df0aedb73a378601be431defc7d2f
+one-command pin tree            11a04056e6ffbf79447257e06ad2ec2bcd12f962
+current public commit    41051d9e544063309d3b69462aecb7aa4edbe149
+current public tree      daf2a7e4a7b068b17e9da28377fefaaef1b78a44
 ```
 
-The current public commit contains the same managed Auto-Refresh transport plus the later one-command installer and launcher wiring.
+The one-command implementation pin contains the same managed Auto-Refresh transport plus the later one-command installer and launcher wiring. The current public commit differs from that pin by documentation-only changes (public PR #40), so the evidence claim is unchanged.
 
 ## Failure-derived lesson
 

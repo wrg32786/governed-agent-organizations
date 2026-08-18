@@ -32,11 +32,11 @@ The HTML and PDF are generated from the sanitized `PAPER.md`. The PDF metadata i
 
 ## History
 
-The current repository remains the private review and forensic archive. Its historical branches, pull-request refs, issue and pull-request history, commit ancestry, and reachable objects may contain private author metadata or internal operating history.
+The private review and forensic archive is `wrg32786/governed-agent-organizations-review`. Its historical branches, pull-request refs, issue and pull-request history, commit ancestry, and reachable objects may contain private author metadata or internal operating history, and it remains private.
 
-Public release must use a genuinely fresh repository/object database populated only from the unchanged parentless clean root. The only alternative is a GitHub-confirmed complete purge of all old refs and objects followed by fresh independent review of the resulting repository.
+The current repository is the clean publication target: a genuinely fresh repository/object database populated only from the unchanged parentless clean root `f64b637a403b16fbbf69f4f2f0a7ad0d8b918e0e` (tree `e2ffe6fc9354654f3ee16ef84f1bc25d03412611`), pushed as the single ref `refs/heads/main` and independently verified.
 
-Rewriting a branch, moving the default branch, or changing this repository's visibility is insufficient and is not an authorized publication procedure.
+Rewriting a branch, moving a default branch, or changing the archive's visibility is insufficient and is not an authorized publication procedure.
 
 ## Final human review
 
