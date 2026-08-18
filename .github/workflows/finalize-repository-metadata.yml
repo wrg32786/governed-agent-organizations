@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - gpt/repo-metadata-release
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   finalize:
@@ -15,36 +19,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-
-      - name: Update About metadata and topics
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-
-          gh api --method PATCH "repos/$REPO" --input - <<'JSON'
-          {
-            "description": "Paper v1 and public research corpus for persistent identity, context continuity, human authority, and evidence-bounded improvement in governed AI agent organizations.",
-            "homepage": "https://github.com/wrg32786/governed-agent-organizations/blob/main/paper/governed-agent-organizations.pdf"
-          }
-          JSON
-
-          gh api --method PUT "repos/$REPO/topics" --input - <<'JSON'
-          {
-            "names": [
-              "ai-agents",
-              "agent-governance",
-              "agentic-ai",
-              "multi-agent-systems",
-              "ai-safety",
-              "context-continuity",
-              "institutional-memory",
-              "human-in-the-loop",
-              "research-paper"
-            ]
-          }
-          JSON
 
       - name: Publish Paper v1 release
         env:
@@ -102,11 +76,44 @@ jobs:
             --repo "$REPO" \
             --clobber
 
-      - name: Remove temporary public branches
+      - name: Attempt About metadata and topics
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          gh api --method DELETE "repos/$REPO/git/refs/heads/gpt%2Frepo-metadata-release"
+
+          gh api --method PATCH "repos/$REPO" --input - <<'JSON'
+          {
+            "description": "Paper v1 and public research corpus for persistent identity, context continuity, human authority, and evidence-bounded improvement in governed AI agent organizations.",
+            "homepage": "https://github.com/wrg32786/governed-agent-organizations/blob/main/paper/governed-agent-organizations.pdf"
+          }
+          JSON
+
+          gh api --method PUT "repos/$REPO/topics" --input - <<'JSON'
+          {
+            "names": [
+              "ai-agents",
+              "agent-governance",
+              "agentic-ai",
+              "multi-agent-systems",
+              "ai-safety",
+              "context-continuity",
+              "institutional-memory",
+              "human-in-the-loop",
+              "research-paper"
+            ]
+          }
+          JSON
+
+      - name: Close maintenance PR and remove temporary branches
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh pr close "$PR_NUMBER" --repo "$REPO" --delete-branch
           gh api --method DELETE "repos/$REPO/git/refs/heads/gpt%2Fprincipal-decision-finalize" || true
