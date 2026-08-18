@@ -1,0 +1,112 @@
+name: Finalize repository metadata and Paper v1 release
+
+on:
+  push:
+    branches:
+      - gpt/repo-metadata-release
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update About metadata and topics
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          gh api --method PATCH "repos/$REPO" --input - <<'JSON'
+          {
+            "description": "Paper v1 and public research corpus for persistent identity, context continuity, human authority, and evidence-bounded improvement in governed AI agent organizations.",
+            "homepage": "https://github.com/wrg32786/governed-agent-organizations/blob/main/paper/governed-agent-organizations.pdf"
+          }
+          JSON
+
+          gh api --method PUT "repos/$REPO/topics" --input - <<'JSON'
+          {
+            "names": [
+              "ai-agents",
+              "agent-governance",
+              "agentic-ai",
+              "multi-agent-systems",
+              "ai-safety",
+              "context-continuity",
+              "institutional-memory",
+              "human-in-the-loop",
+              "research-paper"
+            ]
+          }
+          JSON
+
+      - name: Publish Paper v1 release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TARGET: 43e88fb034b538ecba3ef53d0b9515efe690b190
+        run: |
+          set -euo pipefail
+
+          cat > /tmp/paper-v1-release.md <<'EOF'
+          # Governed Agent Organizations — Paper v1
+
+          Public architecture and research synthesis for persistent, governed AI agent organizations.
+
+          ## Included
+
+          - Paper v1 in Markdown, HTML, and print-ready PDF
+          - typed claim/evidence ledger
+          - exact source and license registry
+          - limitations and explicit non-claims
+          - sanitized Auto-Refresh continuity case study
+          - reusable program-control framework and review records
+
+          ## Evidence boundary
+
+          The public result is limited to one Windows reference seat completing 11 of 11 observed Auto-Refresh transport transactions, with zero stranded acknowledgements and zero duplicate clears.
+
+          This release does **not** claim 20 consecutive cycles, fleet reliability, universal platform behavior, implemented Kernel v2, Studio or Domain Engines, a runnable reference corporation, lower operator burden, business outcomes, or empirical superiority over recursive compaction.
+
+          ## Read
+
+          - [Paper in Markdown](https://github.com/wrg32786/governed-agent-organizations/blob/main/PAPER.md)
+          - [HTML edition](https://github.com/wrg32786/governed-agent-organizations/blob/main/paper/index.html)
+          - [PDF edition](https://github.com/wrg32786/governed-agent-organizations/blob/main/paper/governed-agent-organizations.pdf)
+          - [Claim/evidence ledger](https://github.com/wrg32786/governed-agent-organizations/blob/main/CLAIM-EVIDENCE-LEDGER.csv)
+          - [Source and license registry](https://github.com/wrg32786/governed-agent-organizations/blob/main/SOURCE-AND-LICENSE-REGISTRY.csv)
+          EOF
+
+          if gh release view paper-v1 --repo "$REPO" >/dev/null 2>&1; then
+            gh release edit paper-v1 \
+              --repo "$REPO" \
+              --target "$TARGET" \
+              --title "Paper v1 — Governed Agent Organizations" \
+              --notes-file /tmp/paper-v1-release.md
+          else
+            gh release create paper-v1 \
+              --repo "$REPO" \
+              --target "$TARGET" \
+              --title "Paper v1 — Governed Agent Organizations" \
+              --notes-file /tmp/paper-v1-release.md
+          fi
+
+          gh release upload paper-v1 \
+            paper/governed-agent-organizations.pdf \
+            --repo "$REPO" \
+            --clobber
+
+      - name: Remove temporary public branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh api --method DELETE "repos/$REPO/git/refs/heads/gpt%2Frepo-metadata-release"
+          gh api --method DELETE "repos/$REPO/git/refs/heads/gpt%2Fprincipal-decision-finalize" || true
