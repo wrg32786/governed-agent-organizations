@@ -1,6 +1,6 @@
 # Public Release Gate
 
-**Current state: HOLD FOR FINAL PRINCIPAL DECISION.**
+**Current state: APPROVED FOR PUBLIC RELEASE.**
 
 ## Completed
 
@@ -16,9 +16,11 @@
 - [x] Parentless clean-history release candidate generated and tree-matched to the reviewed export.
 - [x] Fresh non-author review of the exact clean tree.
 - [x] Publication mechanism verified: this repository is a genuinely fresh repository/object database populated only from the unchanged parentless clean root, independently reviewed.
-- [ ] Final principal release decision at the unchanged clean-history commit.
+- [x] Final principal release decision recorded on 2026-08-18.
 
-This repository is the fresh clean publication target, seeded only from the unchanged parentless clean root `f64b637a403b16fbbf69f4f2f0a7ad0d8b918e0e` (tree `e2ffe6fc9354654f3ee16ef84f1bc25d03412611`) as the single ref `refs/heads/main`. The private historical refs live in `wrg32786/governed-agent-organizations-review`, which remains the private forensic archive. Moving or rewriting a branch, changing a default branch, or changing the archive's visibility was not and is not an authorized publication procedure; the satisfied mechanism is the genuinely fresh repository above.
+This repository is the fresh clean publication target, seeded only from the unchanged parentless clean root `f64b637a403b16fbbf69f4f2f0a7ad0d8b918e0e` (tree `e2ffe6fc9354654f3ee16ef84f1bc25d03412611`) as the single initial ref `refs/heads/main`. The private historical refs live in `wrg32786/governed-agent-organizations-review`, which remains the private forensic archive. Moving or rewriting a branch, changing a default branch, or changing the archive's visibility was not and is not an authorized publication procedure; the satisfied mechanism is the genuinely fresh repository above.
+
+Before visibility changes, this decision-recording commit requires one final non-author review. No further content change is authorized between that PASS and the public visibility change.
 
 The unestablished 20-cycle bookkeeping population and fleet reliability are explicit non-claims and Paper v2 gates. They are not Paper v1 release blockers.
 

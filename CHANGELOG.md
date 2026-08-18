@@ -18,4 +18,9 @@
 - Finalized release-context wording for the clean target; the private review and forensic archive is `wrg32786/governed-agent-organizations-review`.
 - No change to hypotheses, material claims, source pins, the bounded 11-of-11 evidence statement, or non-claims.
 
-Public visibility awaits the final principal release decision.
+## Principal public-release approval - 2026-08-18
+
+- Will, Principal, approved public release from approval-ready commit `5ec77434b112c381cc1c8fc285024635d3cb3cea`.
+- This decision-recording change is limited to publication status text and regenerated HTML/PDF artifacts.
+- Hypotheses, material claims, source pins, the bounded 11-of-11 evidence statement, and non-claims remain unchanged.
+- Public visibility is permitted only after a final non-author review of the unchanged decision-recording commit.
