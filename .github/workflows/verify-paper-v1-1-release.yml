@@ -1,0 +1,65 @@
+name: Verify Paper v1.1 release
+
+on:
+  push:
+    branches:
+      - gpt/verify-paper-v1-1
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      TARGET: f738a99c46190ae27ee6da9e52b5b78ab7d2d195
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Verify release and asset
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$TARGET"
+          git fetch --force --tags origin
+          test "$(git rev-parse 'paper-v1.1^{}')" = "$TARGET"
+
+          gh release view paper-v1.1 --repo "$REPO" \
+            --json tagName,targetCommitish,name,isDraft,isPrerelease,url,assets \
+            > /tmp/release.json
+
+          test "$(jq -r .tagName /tmp/release.json)" = "paper-v1.1"
+          test "$(jq -r .targetCommitish /tmp/release.json)" = "$TARGET"
+          test "$(jq -r .isDraft /tmp/release.json)" = "false"
+          test "$(jq -r .isPrerelease /tmp/release.json)" = "false"
+          jq -e '.assets[] | select(.name == "governed-agent-organizations.pdf")' /tmp/release.json >/dev/null
+          python scripts/check_public_release.py
+
+          URL=$(jq -r .url /tmp/release.json)
+          NAME=$(jq -r .name /tmp/release.json)
+          ASSET=$(jq -r '.assets[] | select(.name == "governed-agent-organizations.pdf") | .name' /tmp/release.json)
+
+          gh pr comment 2 --repo "$REPO" --body "## Paper v1.1 publication receipt
+
+\`\`\`text
+release       $NAME
+tag           paper-v1.1
+target        $TARGET
+asset         $ASSET
+main          $TARGET
+release check PASS
+URL           $URL
+\`\`\`
+
+Paper v1 remains frozen at \`paper-v1\`. PR #2 is merged and Paper v1.1 is published from the unchanged reviewed commit."
+
+      - name: Remove temporary verification branch
+        if: always()
+        run: |
+          gh api --method DELETE "repos/$REPO/git/refs/heads/gpt%2Fverify-paper-v1-1" || true
