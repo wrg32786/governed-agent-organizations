@@ -1,5 +1,14 @@
 # Changelog
 
+## Paper v1.1 correction candidate - 2026-08-19
+
+- Preserved Paper v1 as the frozen `paper-v1` release and versioned the scientific correction as Paper v1.1.
+- Pinned the exact NIST NCCoE draft PDF artifact published 2026-02-05 and disambiguated the full AgentSpec and AgentBound titles with immutable arXiv versions.
+- Replaced final-boundary wording with the narrower statement that the current bounded synthesis claim narrows to the broader governed integration; novelty priority remains unproven.
+- Added a sanitized durable record of the third-party audit and its terminal finding.
+- Regenerated the HTML/PDF artifacts and retained every implementation, Auto-Refresh, reliability, and business-outcome claim boundary.
+- Fresh non-author technical and citation/license review plus a new principal release decision remain required before publication.
+
 ## Paper v1 release candidate - 2026-08-16
 
 - Integrated the reviewed architecture and claim/evidence discipline.

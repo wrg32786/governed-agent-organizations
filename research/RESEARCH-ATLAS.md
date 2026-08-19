@@ -4,7 +4,8 @@ This is the public-safe map of the research program. Detailed private assignment
 
 | Research family | Central question | Current public posture |
 |---|---|---|
-| Strategic landscape | Which mechanisms already exist, and what should not be rebuilt? | Source-grounded synthesis complete |
+| Strategic landscape | Which mechanisms already exist, and what should not be rebuilt? | Source-grounded synthesis complete; bounded rather than systematic |
+| Agent identity, authorization, and runtime governance | Which parts are established by IAM practice, runtime policy engines, behavioral governance, receipts, and standing delegation, and what integration remains? | Exact NIST draft PDF, AgentSpec `arXiv:2503.18666v3`, and AgentBound `arXiv:2606.30970v2` disposition added; current bounded synthesis claim narrowed; systematic review incomplete |
 | Continuity | How does work survive context and session boundaries without stale identity or partial-success claims? | Bounded transport result; repeated/fleet reliability unproven |
 | Compaction vs fresh-session continuity | How do recursive summaries compare with discrete capsules and live re-grounding over many boundaries? | Comparative hypothesis; experiment unrun |
 | Recollection | How should positive, negative, temporal, confidential, and push recall be evaluated? | Benchmark architecture; results not published |
@@ -22,7 +23,7 @@ This is the public-safe map of the research program. Detailed private assignment
 | Domain Engine Factory | How are business-function engines generated, tested, installed, and rolled back? | Architecture; runtime not implemented |
 | Operator Studio | How should decisions, evidence, missions, models, and businesses appear to a human? | Product architecture; implementation held |
 | Reference corporation | What staged pilot could test the integrated system without false business claims? | Pre-registration; currently unrunnable |
-| Technical paper | What is original, prior art, proposed, implemented, demonstrated, or unknown? | Paper v1 public edition |
+| Technical paper | What is original, prior art, proposed, implemented, demonstrated, or unknown? | Paper v1 published and frozen; Paper v1.1 related-work correction candidate pending review |
 
 ## Maturity ladder
 

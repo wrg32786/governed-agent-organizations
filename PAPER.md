@@ -2,17 +2,17 @@
 
 ## Persistent identity, context continuity, human authority, and evidence-bounded improvement
 
-**Edition:** Paper v1 - architecture and research synthesis  
-**Evidence cutoff:** 2026-08-16  
-**Status:** Paper v1 public edition; public release approved by the principal on 2026-08-18
+**Edition:** Paper v1.1 - related-work correction to Paper v1<br>
+**Evidence cutoff:** 2026-08-19<br>
+**Status:** Paper v1.1 correction candidate; Paper v1 remains frozen at tag `paper-v1`; publication requires a new reviewed release identity
 
 ## Abstract
 
 Language models can generate plans, code, analysis, and text, but those abilities alone do not create an organization. A durable organization needs identity that survives model and session changes, working context that is not confused with institutional memory, authority that cannot be inferred from conversation, independent evaluation, explicit ownership and closure, and outcomes that are not reduced to agent activity.
 
-This paper proposes a governed architecture for persistent AI agent organizations. Its contribution is not a single new memory algorithm, context method, orchestration framework, or optimization technique. It is a system of non-substitutable layers and explicit transitions joining persistent identity, active working context, inspectable institutional memory, human authority, evidence-bounded improvement, organizational coordination, domain engines, and outcome discipline.
+This paper proposes a governed architecture for persistent AI agent organizations. Its contribution is not a single new memory algorithm, context method, orchestration framework, authorization mechanism, runtime policy engine, or optimization technique. It is a system of non-substitutable layers and explicit transitions joining persistent identity, active working context, inspectable institutional memory, human authority, evidence-bounded improvement, organizational coordination, domain engines, and outcome discipline.
 
-The architecture is presented as six falsifiable hypotheses rather than a universal novelty claim. Existing prior art supplies important components. This work asks how those components can be combined without turning context into truth, signatures into authority, candidates into active behavior, or activity into outcomes.
+The architecture is presented as six falsifiable hypotheses rather than a universal novelty claim. Existing prior art supplies important components. This work asks how those components can be combined without turning context into truth, identity into authority, authorization into behavioral approval, signatures into permission, candidates into active behavior, or activity into outcomes.
 
 A public reference implementation of managed context refresh is available in `wrg32786/aigent-os` at commit `81dd47d3215df0aedb73a378601be431defc7d2f`. One bounded release population observed 11 of 11 transport transactions on one Windows reference seat, with one capsule request, one acknowledgement, one clear, and one fresh session identity per transaction; zero acknowledgements were stranded and zero duplicate clears occurred. This does not establish 20-cycle bookkeeping, fleet reliability, universal platform behavior, implemented organizational products, or business outcomes.
 
@@ -35,7 +35,7 @@ The contribution is the refusal to collapse those layers, plus explicit transiti
 
 ### What is not claimed as original
 
-This paper does not claim invention of externalized context, memory retrieval, agent workflows, tool protocols, multi-agent collaboration, skill optimization, event-sourced sessions, or plugin composition. Prior work supplies each of those mechanisms. The proposed contribution is the governed combination and its non-substitution rules.
+This paper does not claim invention of externalized context, memory retrieval, agent workflows, tool protocols, multi-agent collaboration, skill optimization, event-sourced sessions, plugin composition, agent identity management, delegated authorization, runtime policy languages, pre-execution enforcement, cryptographic governance receipts, or standing delegation. Prior work supplies each of those mechanisms or directly adjacent proposals. The proposed contribution is the broader governed combination and its non-substitution rules. Novelty priority for that integration remains unproven.
 
 ### Evidence vocabulary
 
@@ -183,7 +183,9 @@ This does not make capsules automatically accurate. A capsule can omit facts, co
 
 ### 3.4 Authority
 
-Consequential tools and organizational changes require pre-action authority. Post-action warnings are telemetry, not control. Agent identity, model capability, source authenticity, and action permission remain distinct.
+Consequential tools and organizational changes require pre-action authority. Post-action warnings are telemetry, not control. Agent identity, model capability, source authenticity, delegated resource permission, behavioral approval, and action permission remain distinct.
+
+The NIST NCCoE draft concept paper *Accelerating the Adoption of Software and AI Agent Identity and Authorization* (published 2026-02-05) scopes agent identification, authentication, dynamic authorization, delegation, auditing, and non-repudiation as separate enterprise design questions. *AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents* (`arXiv:2503.18666v3`) supplies directly adjacent prior work on external runtime rules evaluated before agent actions. *Behavioral Governance for Autonomous AI Agents: The AgentBound Framework* (`arXiv:2606.30970v2`) proposes a three-authority behavioral-governance layer, signed policy artifacts, governance receipts, and standing delegation. None of those mechanisms is claimed here as an isolated invention.
 
 ### 3.5 Evidence and evaluation
 
@@ -231,6 +233,9 @@ The source registry records exact pins, licenses or citation-only terms, inspect
 | Memory, reflection, planning | Generative Agents; Reflexion; ExpeL; Agent Workflow Memory | ADAPT | Retrieved experience remains evidence, not active authority |
 | Skill optimization | SkillOpt | ADAPT proposal-only | A candidate cannot activate itself |
 | Continual harness refinement | Continual Harness | ADAPT research claims | Optimizer and evaluator remain separate |
+| Agent identity and delegated authorization | *Accelerating the Adoption of Software and AI Agent Identity and Authorization* (NIST NCCoE draft PDF, 2026-02-05) | ALIGN/WATCH | Identity, authentication, authorization, delegation, and audit are prior concerns; the draft is not a normative standard or demonstrated architecture |
+| Runtime policy enforcement | *AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents* (`arXiv:2503.18666v3`) | ADAPT | Trigger-predicate-enforcement rules and pre-action controls are prior work; they do not establish persistent organizational identity, memory, or outcome closure |
+| Behavioral governance, receipts, and standing delegation | *Behavioral Governance for Autonomous AI Agents: The AgentBound Framework* (`arXiv:2606.30970v2`) | ADAPT/CITE/WATCH | Multi-authority pre-execution governance, signed policy artifacts, verifiable receipts, and persistent delegation are prior proposals; empirical results remain future work |
 | Signed-event collaboration | Buzz | INTEROPERATE | Signature is not authority |
 | Tool/context protocol | MCP | ADAPT | The application retains policy and scope authority |
 | Agent-user event transport | AG-UI | INTEROPERATE | Transport does not grant action authority |
@@ -240,6 +245,16 @@ The source registry records exact pins, licenses or citation-only terms, inspect
 | Dynamic component composition | Cordis and its preprint | ADAPT/CITE/WATCH | Reversible runtime effects are not organizational rollback or authority |
 | Multi-agent software organizations | MetaGPT; ChatDev | WATCH | Role-play and software benchmarks do not establish governed organizations |
 | Kernel-style agent services | AIOS | WATCH/ADAPT | Service composition remains below the governance boundary |
+
+### Identity, authorization, runtime enforcement, and behavioral governance
+
+The NIST NCCoE draft concept paper *Accelerating the Adoption of Software and AI Agent Identity and Authorization*, published on 2026-02-05, treats agent identification, identity metadata, authentication and key lifecycle, dynamic authorization, least privilege, proof of authority, on-behalf-of delegation, human binding, tamper-verifiable audit, and non-repudiation as distinct enterprise design questions. It is a draft scoping document for potential NCCoE work, not a normative standard, implementation, or demonstrated architecture.
+
+*AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents* (`arXiv:2503.18666v3`) establishes directly adjacent prior work for interpretable runtime constraints. Its domain-specific language combines triggers, predicates, and enforcement mechanisms and evaluates constraints during agent execution, including before unsafe actions are dispatched. Its published evaluations are external results; this project has not reproduced them. AgentSpec does not by itself establish persistent organizational identity, delegated authority semantics, institutional memory, decision propagation, or outcome discipline.
+
+*Behavioral Governance for Autonomous AI Agents: The AgentBound Framework* (`arXiv:2606.30970v2`) overlaps more directly with the authority portions of this paper. It proposes delegated authorization, owner-signed and versioned behavioral constitutions, site action contracts, conservative pre-execution composition, cryptographically verifiable governance receipts, and standing delegation for long-running agents. Those mechanisms cannot be claimed here as isolated novelties. The AgentBound paper defines an evaluation framework, but reports comprehensive empirical results and public artifacts as future work; it is therefore treated here as a published architecture proposal rather than demonstrated behavior.
+
+After accounting for this work, the current bounded synthesis claim narrows to a broader governed-integration hypothesis: continuity, persistent identity, working context, institutional memory, authority, organizational obligations, independent improvement promotion, durable human decision closure, and measured outcomes remain non-substitutable and must be connected by explicit transitions. This bounded review does not close the priority question; novelty priority for the complete integration remains unproven.
 
 ### DeepSeek Harness and Cordis
 
@@ -368,6 +383,7 @@ A future comparison of recursive compaction and fresh-session capsules should ho
 This paper does not establish:
 
 - novelty priority for every hypothesis;
+- novelty of agent identity, delegated authorization, runtime policy enforcement, governance receipts, or standing delegation;
 - 20-cycle or fleet reliability;
 - universal prompt-injection resistance;
 - safe autonomous self-improvement;
@@ -378,6 +394,8 @@ This paper does not establish:
 - lower operator burden;
 - improved business outcomes.
 
+The related-work population remains bounded and is not a systematic literature review. The sources added in Paper v1.1 caused the current bounded synthesis claim to narrow; additional identity, authorization, runtime-governance, behavioral-contract, provenance, and auditability work may narrow it further.
+
 The detailed raw operating evidence for the bounded live result is not published in this edition. The public claim is limited to the sanitized extract and publicly inspectable product identity. The absence of raw private evidence is a limitation, not permission to infer a broader result.
 
 The Cordis preprint has no reuse license identified at the pinned repository state. It is cited and paraphrased only; no prose, figures, diagrams, pages, or code are reproduced.
@@ -386,4 +404,4 @@ The Cordis preprint has no reuse license identified at the pinned repository sta
 
 Capable agents do not become organizations by adding more context, memory, tools, agents, or autonomy. They become organizations only when persistent identity, inspectable institutional memory, authority, independent evaluation, obligations, rollback, and outcomes are joined by explicit, falsifiable transitions.
 
-The contribution claimed here is a governed integration and a set of failure-derived hypotheses. Novelty priority remains unproven. A bounded context-refresh transport result exists, while repeated reliability, broad implementation, organizational performance, and business outcomes remain open empirical questions.
+This paper does not claim invention of agent identity, delegated authorization, runtime policy enforcement, behavioral-governance receipts, or standing delegation. The current bounded synthesis claim is the broader governed integration and a set of failure-derived hypotheses. Novelty priority remains unproven. A bounded context-refresh transport result exists, while repeated reliability, broad implementation, organizational performance, and business outcomes remain open empirical questions.

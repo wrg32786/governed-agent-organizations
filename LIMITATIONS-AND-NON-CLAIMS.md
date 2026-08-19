@@ -1,8 +1,9 @@
 # Limitations and Non-Claims
 
-Paper v1 is architecture and research synthesis. It does not establish:
+Paper v1.1 is architecture and research synthesis. It does not establish:
 
 - novelty priority for every hypothesis;
+- novelty of agent identity management, delegated authorization, runtime policy enforcement, cryptographic governance receipts, or standing delegation;
 - 20 consecutive independently verified refresh cycles;
 - fleet reliability or universal platform reliability;
 - universal prompt-injection resistance;
@@ -22,6 +23,8 @@ one run != reliability
 research disposition != implementation
 activity != outcome
 ```
+
+The related-work population remains bounded and is not a systematic literature review. *Accelerating the Adoption of Software and AI Agent Identity and Authorization* (NIST NCCoE draft PDF published 2026-02-05), *AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents* (`arXiv:2503.18666v3`), and *Behavioral Governance for Autonomous AI Agents: The AgentBound Framework* (`arXiv:2606.30970v2`) caused the current bounded synthesis claim to narrow. Additional identity, authorization, runtime-governance, behavioral-contract, provenance, and auditability work may narrow it further.
 
 A bounded release population observed 11 of 11 Auto-Refresh transport transactions on one Windows reference seat. That supports only the claim stated in the continuity case study. The accelerated test did not establish a 20-of-20 bookkeeping population, and no fleet claim follows.
 

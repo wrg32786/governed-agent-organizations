@@ -1,6 +1,6 @@
 # Governed Agent Organizations
 
-**Status:** Paper v1 public edition. Principal public release approved on 2026-08-18. This repository is the clean publication target, seeded only from the unchanged parentless clean root `f64b637a403b16fbbf69f4f2f0a7ad0d8b918e0e`. Content, citations, rendered artifacts, sanitation, fresh-root review, and publication-mechanism verification are complete. The private review and forensic archive is `wrg32786/governed-agent-organizations-review`.
+**Status:** Paper v1.1 related-work correction candidate. Paper v1 remains frozen at tag `paper-v1`. The correction must pass fresh non-author technical and citation/license review and receive a new principal release decision before publication.
 
 This repository is a public-safe research corpus for persistent, governed AI agent organizations. It asks how capable models can become durable institutions without collapsing identity, working context, memory, authority, evidence, and outcomes into one opaque agent loop.
 
@@ -41,7 +41,7 @@ publish event != business outcome
 
 ## Repository map
 
-- [`PAPER.md`](PAPER.md) - Paper v1.
+- [`PAPER.md`](PAPER.md) - Paper v1.1 correction candidate; Paper v1 remains preserved at tag `paper-v1`.
 - [`paper/index.html`](paper/index.html) - readable HTML edition.
 - [`paper/governed-agent-organizations.pdf`](paper/governed-agent-organizations.pdf) - print-ready PDF.
 - [`CLAIM-EVIDENCE-LEDGER.csv`](CLAIM-EVIDENCE-LEDGER.csv) - typed claims.
@@ -56,6 +56,6 @@ publish event != business outcome
 
 ## Reference implementation
 
-The public [`aigent-os`](https://github.com/wrg32786/aigent-os) repository ships a managed context-refresh implementation. Paper v1 makes a bounded 11-of-11 transport claim on one Windows reference seat and explicitly does not claim 20-cycle or fleet reliability.
+The public [`aigent-os`](https://github.com/wrg32786/aigent-os) repository ships a managed context-refresh implementation. Paper v1.1 retains the bounded 11-of-11 transport claim on one Windows reference seat and explicitly does not claim 20-cycle or fleet reliability.
 
 The private research laboratory is not part of this export.
