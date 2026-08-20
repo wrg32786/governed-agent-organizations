@@ -169,7 +169,7 @@ li { margin: .25em 0; }
   size: A4;
   margin: 20mm 18mm 20mm;
   @top-left { content: "Governed Agent Organizations"; color: #52606d; font-size: 8.5pt; }
-  @top-right { content: "Paper v1.1"; color: #52606d; font-size: 8.5pt; }
+  @top-right { content: "Paper v1.1.1"; color: #52606d; font-size: 8.5pt; }
   @bottom-center { content: counter(page); color: #52606d; font-size: 8.5pt; }
 }
 @media print {
@@ -197,7 +197,7 @@ html_doc = f'''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A governed architecture for persistent AI agent organizations: identity, context continuity, memory, authority, evidence, and outcomes as separate layers.">
-<title>Governed Agent Organizations - Paper v1.1</title>
+<title>Governed Agent Organizations - Paper v1.1.1</title>
 <style>{css}</style>
 </head>
 <body>
@@ -213,7 +213,7 @@ html_doc = f'''<!doctype html>
 {''.join(toc)}
 <main class="paper" id="paper">{str(soup)}</main>
 </div>
-<div class="footer-note">Paper v1.1 - related-work correction. See the source registry, audit record, and limitations for evidence boundaries.</div>
+<div class="footer-note">Paper v1.1.1 - publication-status correction to the Paper v1.1 related-work correction. See the source registry, audit record, and limitations for evidence boundaries.</div>
 </body></html>'''
 
 html_path = OUT / 'index.html'

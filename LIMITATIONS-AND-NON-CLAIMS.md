@@ -1,6 +1,6 @@
 # Limitations and Non-Claims
 
-Paper v1.1 is architecture and research synthesis. It does not establish:
+Paper v1.1 (published; status recorded by Paper v1.1.1) is architecture and research synthesis. It does not establish:
 
 - novelty priority for every hypothesis;
 - novelty of agent identity management, delegated authorization, runtime policy enforcement, cryptographic governance receipts, or standing delegation;

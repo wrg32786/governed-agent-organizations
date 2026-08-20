@@ -1,6 +1,6 @@
 # Governed Agent Organizations
 
-**Status:** Paper v1.1 related-work correction candidate. Paper v1 remains frozen at tag `paper-v1`. The correction must pass fresh non-author technical and citation/license review and receive a new principal release decision before publication.
+**Status:** Paper v1.1.1 - publication-status correction to Paper v1.1. Paper v1 remains frozen at tag `paper-v1`; Paper v1.1 is preserved at tag `paper-v1.1`. The v1.1 related-work correction passed fresh non-author technical and citation/license review and received the principal release decision; this edition records that published status and changes no scientific content.
 
 This repository is a public-safe research corpus for persistent, governed AI agent organizations. It asks how capable models can become durable institutions without collapsing identity, working context, memory, authority, evidence, and outcomes into one opaque agent loop.
 
@@ -41,7 +41,7 @@ publish event != business outcome
 
 ## Repository map
 
-- [`PAPER.md`](PAPER.md) - Paper v1.1 correction candidate; Paper v1 remains preserved at tag `paper-v1`.
+- [`PAPER.md`](PAPER.md) - Paper v1.1.1 public edition (the published v1.1 related-work correction); Paper v1 remains preserved at tag `paper-v1`.
 - [`paper/index.html`](paper/index.html) - readable HTML edition.
 - [`paper/governed-agent-organizations.pdf`](paper/governed-agent-organizations.pdf) - print-ready PDF.
 - [`CLAIM-EVIDENCE-LEDGER.csv`](CLAIM-EVIDENCE-LEDGER.csv) - typed claims.

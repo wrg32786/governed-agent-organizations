@@ -2,7 +2,7 @@
 
 **Paper v1 state: PUBLISHED AND FROZEN at tag `paper-v1`.**
 
-**Paper v1.1 correction state: HOLD pending fresh review and a new principal release decision.**
+**Paper v1.1 correction state: PUBLISHED; preserved at tag `paper-v1.1`. The fresh non-author technical and citation/license review passed and the principal release decision was recorded; Paper v1.1.1 is the publication-status correction recording it.**
 
 ## Paper v1.1 correction gate
 
@@ -10,8 +10,8 @@
 - [x] Pin exact, disambiguated source titles and immutable versions.
 - [x] Soften the synthesis wording to preserve the bounded, non-systematic review boundary.
 - [x] Preserve a sanitized durable third-party audit record.
-- [ ] Fresh non-author technical and citation/license PASS on the exact correction commit.
-- [ ] New principal decision authorizing a `paper-v1.1` release at an unchanged commit.
+- [x] Fresh non-author technical and citation/license PASS on the exact correction commit.
+- [x] New principal decision authorizing a `paper-v1.1` release at an unchanged commit.
 
 ## Paper v1 completed
 
@@ -31,7 +31,7 @@
 
 This repository is the fresh clean publication target, seeded only from the unchanged parentless clean root `f64b637a403b16fbbf69f4f2f0a7ad0d8b918e0e` (tree `e2ffe6fc9354654f3ee16ef84f1bc25d03412611`) as the single initial ref `refs/heads/main`. The private historical refs live in `wrg32786/governed-agent-organizations-review`, which remains the private forensic archive. Moving or rewriting a branch, changing a default branch, or changing the archive's visibility was not and is not an authorized publication procedure; the satisfied mechanism is the genuinely fresh repository above.
 
-Paper v1's publication gate is closed and historical. Paper v1.1 may not reuse that approval; it requires fresh review and a new principal release decision at an unchanged correction commit.
+Paper v1's publication gate is closed and historical. Paper v1.1 did not reuse that approval; it received its own fresh review and principal release decision at an unchanged correction commit, and Paper v1.1.1 records that published status.
 
 The unestablished 20-cycle bookkeeping population and fleet reliability are explicit non-claims and Paper v2 gates. They are not Paper v1 release blockers.
 

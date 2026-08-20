@@ -2,9 +2,9 @@
 
 ## Persistent identity, context continuity, human authority, and evidence-bounded improvement
 
-**Edition:** Paper v1.1 - related-work correction to Paper v1<br>
+**Edition:** Paper v1.1.1 - publication-status correction to Paper v1.1<br>
 **Evidence cutoff:** 2026-08-19<br>
-**Status:** Paper v1.1 correction candidate; Paper v1 remains frozen at tag `paper-v1`; publication requires a new reviewed release identity
+**Status:** Published; status correction only. Paper v1 frozen at tag `paper-v1`; Paper v1.1 preserved at tag `paper-v1.1`; review and principal approval recorded
 
 ## Abstract
 
