@@ -1,5 +1,7 @@
 # Governed Agent Organizations
 
+> **Looking for the software?** This repo is the paper and research corpus. The reference implementation is **[aigent-OS](https://github.com/wrg32786/aigent-os)**, a Claude Code harness that refreshes its own context instead of compacting: at a threshold it writes a verified capsule, runs /clear, and resumes in a fresh session. The paper's bounded result for it is 11 of 11 observed Auto-Refresh cycles on one Windows reference seat (see the [case study](case-studies/continuity-and-auto-refresh.md)). That is not a fleet or reliability claim.
+
 **Status:** Paper v1.1.1 - publication-status correction to Paper v1.1. Paper v1 remains frozen at tag `paper-v1`; Paper v1.1 is preserved at tag `paper-v1.1`. The v1.1 related-work correction passed fresh non-author technical and citation/license review and received the principal release decision; this edition records that published status and changes no scientific content.
 
 This repository is a public-safe research corpus for persistent, governed AI agent organizations. It asks how capable models can become durable institutions without collapsing identity, working context, memory, authority, evidence, and outcomes into one opaque agent loop.
